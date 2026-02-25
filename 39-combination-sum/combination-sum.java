@@ -12,13 +12,17 @@ class Solution {
         result[0].add(new ArrayList<>()); // for fetching start value 
 
         for(int num : candidates){
-            for(int i = num; i<= target; i++){
-                for(List<Integer> combination: result[i-num]){
-                    List<Integer> newCombination = new ArrayList<>(combination);
-                    newCombination.add(num);
-                    result[i].add(newCombination);
-                }
+            if(num> target) continue;
+
+            for(int i=num; i<=target; i++){
+                 for(List<Integer> combination: result[i-num]){
+                List<Integer> newCombination = new ArrayList<>(combination);
+                newCombination.add(num);
+                result[i].add(newCombination);
+            }          
+
             }
+  
         }
 
         return result[target];
